@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
-export default function DropDownItem({
+export default function DropdownItem({
   buttonName,
   dropDownValues,
   preference,

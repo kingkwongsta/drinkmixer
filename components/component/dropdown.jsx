@@ -4,16 +4,8 @@
  */
 
 "use client";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenuTrigger,
-  DropdownMenuRadioItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuContent,
-  DropdownMenu,
-} from "@/components/ui/dropdown-menu";
 import { useState } from "react";
-import DropDownItem from "./dropdownitem";
+import DropDownItem from "./DropDownItem";
 import userStore from "@/lib/userStore";
 
 export default function Dropdown() {
@@ -69,9 +61,6 @@ export default function Dropdown() {
             setPreference={setUserMood}
           />
         </div>
-        <Button className="mx-auto w-full md:w-auto max-w-xs">
-          Generate Recipe
-        </Button>
       </div>
     </div>
   );
