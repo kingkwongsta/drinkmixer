@@ -47,45 +47,32 @@ export default function Dropdown() {
   ];
 
   return (
-    <section className="w-full py-12 md:py-24">
-      <div className="container px-4 md:px-6 flex flex-col gap-4">
-        <div className="flex flex-col gap-2 items-center justify-center text-center">
-          <div className="grid gap-1">
-            <h1 className="text-3xl font-bold tracking-tight">
-              Cocktail Recipe Generator
-            </h1>
-            <p className="text-gray-500 dark:text-gray-400">
-              Let's mix up something special! Select your preferences and we'll
-              give you a unique cocktail recipe.
-            </p>
-          </div>
+    <div className="container px-4 md:px-6 flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-row gap-10 justify-center">
+          <DropDownItem
+            buttonName={"Flavor Profile"}
+            dropDownValues={flavorOptions}
+            preference={userFlavor}
+            setPreference={setUserFlavor}
+          />
+          <DropDownItem
+            buttonName={"Liquor Choice"}
+            dropDownValues={liquorOptions}
+            preference={userLiquor}
+            setPreference={setUserLiquor}
+          />
+          <DropDownItem
+            buttonName={"Mood"}
+            dropDownValues={moodOptions}
+            preference={userMood}
+            setPreference={setUserMood}
+          />
         </div>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-row gap-10 justify-center">
-            <DropDownItem
-              buttonName={"Flavor Profile"}
-              dropDownValues={flavorOptions}
-              preference={userFlavor}
-              setPreference={setUserFlavor}
-            />
-            <DropDownItem
-              buttonName={"Liquor Choice"}
-              dropDownValues={liquorOptions}
-              preference={userLiquor}
-              setPreference={setUserLiquor}
-            />
-            <DropDownItem
-              buttonName={"Mood"}
-              dropDownValues={moodOptions}
-              preference={userMood}
-              setPreference={setUserMood}
-            />
-          </div>
-          <Button className="mx-auto w-full md:w-auto max-w-xs">
-            Generate Recipe
-          </Button>
-        </div>
+        <Button className="mx-auto w-full md:w-auto max-w-xs">
+          Generate Recipe
+        </Button>
       </div>
-    </section>
+    </div>
   );
 }
