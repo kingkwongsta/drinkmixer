@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
-export default function DropDownItem({ buttonName }) {
+export default function DropDownItem({ buttonName, dropDownValues }) {
   return (
     <DropdownMenu className="">
       <DropdownMenuTrigger asChild>
@@ -17,10 +17,13 @@ export default function DropDownItem({ buttonName }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[150px]">
         <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-          <DropdownMenuRadioItem value="sweet">Sweet</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="sour">Sour</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="bitter">Bitter</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="fruity">Fruity</DropdownMenuRadioItem>
+          {dropDownValues.map((flavor, index) => {
+            return (
+              <DropdownMenuRadioItem value={flavor} key={index}>
+                {flavor.toUpperCase}
+              </DropdownMenuRadioItem>
+            );
+          })}
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
