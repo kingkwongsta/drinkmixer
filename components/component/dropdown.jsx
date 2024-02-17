@@ -18,7 +18,33 @@ import userStore from "@/lib/userStore";
 
 export default function Dropdown() {
   const [position, setPosition] = useState("sour");
-  const { userMood, setUserMood } = userStore();
+  const {
+    userFlavor,
+    setUserFlavor,
+    userLiquor,
+    setUserLiquor,
+    userMood,
+    setUserMood,
+  } = userStore();
+  const flavorOptions = ["Sweet", "Sour", "Bitter", "Spicy", "Fruity"];
+  const liquorOptions = [
+    "Vodka",
+    "Soju",
+    "Whiskey",
+    "Rum",
+    "Gin",
+    "Tequila",
+    "Brandy",
+  ];
+  const moodOptions = [
+    "Celebratory",
+    "Nostalgic",
+    "Comforting",
+    "Adventurous",
+    "Reflective",
+    "Flirty",
+    "Creative",
+  ];
 
   return (
     <section className="w-full py-12 md:py-24">
@@ -38,49 +64,22 @@ export default function Dropdown() {
           <div className="flex flex-row gap-10 justify-center">
             <DropDownItem
               buttonName={"Flavor Profile"}
-              dropDownValues={["Sweet", "Sour", "Bitter", "Spicy"]}
+              dropDownValues={flavorOptions}
+              preference={userFlavor}
+              setPreference={setUserFlavor}
+            />
+            <DropDownItem
+              buttonName={"Liquor Choice"}
+              dropDownValues={liquorOptions}
+              preference={userLiquor}
+              setPreference={setUserLiquor}
+            />
+            <DropDownItem
+              buttonName={"Mood"}
+              dropDownValues={moodOptions}
               preference={userMood}
               setPreference={setUserMood}
             />
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="w-[150px]" variant="outline">
-                  Liquor
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="min-w-[150px]">
-                <DropdownMenuRadioGroup value="vodka">
-                  <DropdownMenuRadioItem value="vodka">
-                    Vodka
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="rum">Rum</DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="gin">Gin</DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="tequila">
-                    Tequila
-                  </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="w-[150px]" variant="outline">
-                  Mood
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="min-w-[150px]">
-                <DropdownMenuRadioGroup value="refreshing">
-                  <DropdownMenuRadioItem value="refreshing">
-                    Refreshing
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="relaxing">
-                    Relaxing
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="energizing">
-                    Energizing
-                  </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </div>
           <Button className="mx-auto w-full md:w-auto max-w-xs">
             Generate Recipe
