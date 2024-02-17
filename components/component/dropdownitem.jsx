@@ -7,7 +7,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
-export default function DropDownItem({ buttonName, dropDownValues }) {
+export default function DropDownItem({
+  buttonName,
+  dropDownValues,
+  position,
+  setPosition,
+}) {
   return (
     <DropdownMenu className="">
       <DropdownMenuTrigger asChild>
@@ -20,7 +25,7 @@ export default function DropDownItem({ buttonName, dropDownValues }) {
           {dropDownValues.map((flavor, index) => {
             return (
               <DropdownMenuRadioItem value={flavor} key={index}>
-                {flavor.toUpperCase}
+                {flavor}
               </DropdownMenuRadioItem>
             );
           })}

@@ -13,6 +13,7 @@ import {
   DropdownMenu,
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
+import DropDownItem from "./dropdownitem";
 
 export default function Dropdown() {
   const [position, setPosition] = useState("sour");
@@ -33,33 +34,12 @@ export default function Dropdown() {
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-row gap-10 justify-center">
-            {" "}
-            <DropdownMenu className="">
-              <DropdownMenuTrigger asChild>
-                <Button className="w-[150px]" variant="outline">
-                  Flavor Profile
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="min-w-[150px]">
-                <DropdownMenuRadioGroup
-                  value={position}
-                  onValueChange={setPosition}
-                >
-                  <DropdownMenuRadioItem value="sweet">
-                    Sweet
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="sour">
-                    Sour
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="bitter">
-                    Bitter
-                  </DropdownMenuRadioItem>
-                  <DropdownMenuRadioItem value="fruity">
-                    Fruity
-                  </DropdownMenuRadioItem>
-                </DropdownMenuRadioGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <DropDownItem
+              buttonName={"Flavor Profile"}
+              dropDownValues={["Sweet", "Sour", "Bitter", "Spicy"]}
+              position=""
+              setPosition=""
+            />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button className="w-[150px]" variant="outline">
