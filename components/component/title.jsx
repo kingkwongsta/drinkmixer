@@ -1,7 +1,7 @@
 export default function Title() {
   return (
     <div className="flex flex-col gap-2 items-center justify-center text-center">
-      <div className="grid gap-1">
+      <div className="grid gap-8">
         <h1 className="text-3xl font-bold tracking-tight">
           Cocktail Recipe Generator
         </h1>

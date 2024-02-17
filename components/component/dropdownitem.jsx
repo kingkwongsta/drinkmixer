@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   DropdownMenuTrigger,
   DropdownMenuRadioItem,
@@ -13,22 +16,28 @@ export default function DropDownItem({
   preference,
   setPreference,
 }) {
+  const [buttonLabel, setButtonLabel] = useState(buttonName);
+  const handlePreferenceChange = (newValue) => {
+    setPreference(newValue);
+    setButtonLabel(newValue);
+  };
+
   return (
     <DropdownMenu className="">
       <DropdownMenuTrigger asChild>
         <Button className="w-[150px]" variant="outline">
-          {buttonName}
+          {buttonLabel}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[150px]">
         <DropdownMenuRadioGroup
           value={preference}
-          onValueChange={setPreference}
+          onValueChange={handlePreferenceChange}
         >
-          {dropDownValues.map((flavor, index) => {
+          {dropDownValues.map((item, index) => {
             return (
-              <DropdownMenuRadioItem value={flavor} key={index}>
-                {flavor}
+              <DropdownMenuRadioItem value={item} key={index}>
+                {item}
               </DropdownMenuRadioItem>
             );
           })}

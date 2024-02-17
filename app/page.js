@@ -4,7 +4,7 @@ import Dropdown from "@/components/component/dropdown";
 
 export default function Home() {
   return (
-    <main className="w-full py-12 md:py-24">
+    <main className="w-full py-12 md:py-24 space-y-[70px]">
       <Title />
       <Dropdown />
     </main>
