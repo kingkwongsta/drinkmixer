@@ -14,9 +14,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 import DropDownItem from "./dropdownitem";
+import userStore from "@/lib/userStore";
 
 export default function Dropdown() {
   const [position, setPosition] = useState("sour");
+  const { userMood, setUserMood } = userStore();
 
   return (
     <section className="w-full py-12 md:py-24">
@@ -37,8 +39,8 @@ export default function Dropdown() {
             <DropDownItem
               buttonName={"Flavor Profile"}
               dropDownValues={["Sweet", "Sour", "Bitter", "Spicy"]}
-              position=""
-              setPosition=""
+              preference={userMood}
+              setPreference={setUserMood}
             />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
