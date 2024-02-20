@@ -16,10 +16,10 @@ export default function Home() {
       <div className="flex justify-center">
         <GenerateRecipe />
       </div>
-      <div>
-        <RecipeCard2 />
+      <div></div>
+      <div className="flex justify-center">
+        {drinkRecipe && <RecipeCard2 />}
       </div>
-      <div className="flex justify-center">{drinkRecipe && <RecipeCard />}</div>
     </main>
   );
 }
