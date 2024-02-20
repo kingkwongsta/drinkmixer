@@ -32,7 +32,7 @@ export function RecipeCard2() {
               width="64"
             />
           </div>
-          <ul>
+          <ul className="text-sm">
             {drinkRecipe.ingredients
               .filter((item) => item.name !== "Ice cubes")
               .map((ingredient, index) => (

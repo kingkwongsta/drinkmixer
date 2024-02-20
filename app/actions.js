@@ -15,7 +15,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
 
   const instructions = `create a unique cocktail based on the user preferences in the text delimited by triple periods, ensure the drink name doesn't use the same/similar words to ${userMood},${userFlavor},${userLiquor}, `;
   const output_format =
-    'JSON output should contain: "name", "ingredients" (array of key-value pairs with "name" and "quantity"), "instructions".';
+    'JSON output should contain: "name", "ingredients" (array of key-value pairs with "name" and "quantity"), "instructions"';
   const prompt = instructions + output_format + `...${userPreferences}...`;
   const messages = [
     {
@@ -45,6 +45,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     ) {
       throw new Error("Invalid recipe format");
     }
+    console.log(`prompt: ${prompt}`);
     console.log("recipe creation completed...");
     return recipe;
   } catch (error) {
