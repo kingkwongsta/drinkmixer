@@ -4,6 +4,7 @@ import Title from "@/components/component/Title";
 import Dropdown from "@/components/component/Dropdown";
 import GenerateRecipe from "@/components/component/GenerateRecipe";
 import RecipeCard from "@/components/component/RecipeCard";
+import { RecipeCard2 } from "@/components/component/RecipeCard2";
 import userStore from "@/lib/userStore";
 
 export default function Home() {
@@ -15,7 +16,10 @@ export default function Home() {
       <div className="flex justify-center">
         <GenerateRecipe />
       </div>
-      <div className="flex justify-center">{drinkRecipe && <RecipeCard />}</div>
+      <div></div>
+      <div className="flex justify-center">
+        {drinkRecipe && <RecipeCard2 />}
+      </div>
     </main>
   );
 }
