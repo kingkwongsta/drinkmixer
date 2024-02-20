@@ -32,25 +32,22 @@ export function RecipeCard2() {
               width="64"
             />
           </div>
-          <ul className="grid gap-2 text-sm">
-            <li>2 oz white rum</li>
-            <li>1 oz fresh lime juice</li>
-            <li>1 oz simple syrup</li>
-            <li>6-8 fresh mint leaves</li>
-            <li>Club soda</li>
+          <ul>
+            {drinkRecipe.ingredients
+              .filter((item) => item.name !== "Ice cubes")
+              .map((ingredient, index) => (
+                <li key={index}>
+                  {ingredient.quantity} {ingredient.name.toLowerCase()}
+                </li>
+              ))}
           </ul>
         </div>
         <div>
           <h3 className="text-sm font-medium mb-1">Preparation</h3>
           <ol className="list-decimal pl-6 text-sm">
-            <li>
-              In a glass, muddle the mint leaves with lime juice and simple
-              syrup.
-            </li>
-            <li>Fill the glass with ice cubes.</li>
-            <li>Add white rum and stir well.</li>
-            <li>Top it off with club soda.</li>
-            <li>Garnish with mint leaves and lime slices.</li>
+            {drinkRecipe.instructions.split("\n").map((instruction, index) => (
+              <li key={index}>{instruction.trim()}</li>
+            ))}
           </ol>
         </div>
       </CardContent>
