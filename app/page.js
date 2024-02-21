@@ -8,6 +8,8 @@ import { RecipeCard2 } from "@/components/component/RecipeCard2";
 import userStore from "@/lib/userStore";
 
 export default function Home() {
+  // create a new user store
+
   const { drinkRecipe } = userStore();
   return (
     <main className="w-full px-12 py-12 md:py-24 space-y-[50px]">
