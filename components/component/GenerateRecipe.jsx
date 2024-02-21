@@ -24,7 +24,7 @@ export default function GenerateRecipe() {
   return (
     <>
       <form action={getRecipe}>
-        <Button type="submit" className="border-2 bg-slate-300">
+        <Button type="submit" className="">
           Generate Recipe
         </Button>
       </form>

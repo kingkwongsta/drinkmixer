@@ -7,6 +7,7 @@ import RecipeCard from "@/components/component/RecipeCard";
 import { RecipeCard2 } from "@/components/component/RecipeCard2";
 import userStore from "@/lib/userStore";
 import { ThemeToggle } from "@/components/component/ThemeToggle";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   // create a new user store
@@ -20,7 +21,6 @@ export default function Home() {
       <div className="flex justify-center">
         <GenerateRecipe />
       </div>
-      <div></div>
       <div className="flex justify-center">
         {drinkRecipe && <RecipeCard2 />}
       </div>
