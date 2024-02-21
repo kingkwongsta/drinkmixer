@@ -19,20 +19,9 @@ export default function RecipeCard() {
         <CardTitle>{drinkRecipe.name}</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-full overflow-hidden">
-            <img
-              alt="Mojito"
-              height="64"
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "64/64",
-                objectFit: "cover",
-              }}
-              width="64"
-            />
-          </div>
-          <ul className="text-sm">
+        <div className="items-center gap-4">
+          <h3 className="text-sm font-semibold mb-1">Preparation</h3>
+          <ul className="pl-2 text-sm">
             {drinkRecipe.ingredients
               .filter((item) => item.name !== "Ice cubes")
               .map((ingredient, index) => (
@@ -42,8 +31,8 @@ export default function RecipeCard() {
               ))}
           </ul>
         </div>
-        <div>
-          <h3 className="text-sm font-medium mb-1">Preparation</h3>
+        <div className="">
+          <h3 className="text-sm font-semibold mb-1">Preparation</h3>
           <ol className="list-decimal pl-6 text-sm">
             {drinkRecipe.instructions.split(".").map((step, index) => (
               <li key={index}>{step}</li>
