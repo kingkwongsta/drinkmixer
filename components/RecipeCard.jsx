@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import userStore from "@/lib/userStore";
 
-export function RecipeCard2() {
+export default function RecipeCard() {
   const { drinkImage, drinkRecipe } = userStore();
   return (
     <Card className="w-full max-w-lg">
@@ -45,8 +45,8 @@ export function RecipeCard2() {
         <div>
           <h3 className="text-sm font-medium mb-1">Preparation</h3>
           <ol className="list-decimal pl-6 text-sm">
-            {drinkRecipe.instructions.split("\n").map((instruction, index) => (
-              <li key={index}>{instruction.trim()}</li>
+            {drinkRecipe.instructions.split(".").map((step, index) => (
+              <li key={index}>{step}</li>
             ))}
           </ol>
         </div>

@@ -1,13 +1,10 @@
 "use client";
 import Image from "next/image";
-import Title from "@/components/component/Title";
-import Dropdown from "@/components/component/Dropdown";
-import GenerateRecipe from "@/components/component/GenerateRecipe";
-import RecipeCard from "@/components/component/RecipeCard";
-import { RecipeCard2 } from "@/components/component/RecipeCard2";
+import Title from "@/components/title";
+import Dropdown from "@/components/dropdown";
+import GenerateRecipe from "@/components/GenerateRecipe";
+import RecipeCard from "@/components/RecipeCard";
 import userStore from "@/lib/userStore";
-import { ThemeToggle } from "@/components/component/ThemeToggle";
-import { Button } from "@/components/ui/button";
 
 export default function Home() {
   // create a new user store
@@ -15,15 +12,12 @@ export default function Home() {
   const { drinkRecipe } = userStore();
   return (
     <main className="w-full px-12 py-12 md:py-24 space-y-[50px]">
-      <ThemeToggle />
       <Title />
       <Dropdown />
       <div className="flex justify-center">
         <GenerateRecipe />
       </div>
-      <div className="flex justify-center">
-        {drinkRecipe && <RecipeCard2 />}
-      </div>
+      <div className="flex justify-center">{drinkRecipe && <RecipeCard />}</div>
     </main>
   );
 }

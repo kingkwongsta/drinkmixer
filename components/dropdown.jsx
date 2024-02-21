@@ -5,7 +5,7 @@
 
 "use client";
 import { useState } from "react";
-import DropDownItem from "./DropDownItem";
+import DropDownItem from "./component/DropDownItem";
 import userStore from "@/lib/userStore";
 
 export default function Dropdown() {
