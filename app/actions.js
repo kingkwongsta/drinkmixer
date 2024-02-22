@@ -13,7 +13,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
   // Generate recipe using OpenAI - GPT-3.5
   const userPreferences = `contains ${userLiquor} and emphasizes a ${userFlavor} flavor profile for a ${userMood} mood`;
 
-  const instructions = `create a unique cocktail based on the user preferences in the text delimited by triple periods, ensure the drink name doesn't use the same/similar words to ${userMood},${userFlavor},${userLiquor}, `;
+  const instructions = `create a unique cocktail based on the user preferences in the text delimited by triple periods `;
   const output_format =
     'JSON output should contain: "name", "ingredients" (array of key-value pairs with "name" and "quantity"), "instructions"';
   const prompt = instructions + output_format + `...${userPreferences}...`;
