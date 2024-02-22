@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import userStore from "@/lib/userStore";
 import { createCompletion } from "@/app/actions";
 
-export default function GenerateRecipe() {
+export default function GenerateRecipe({ setLoading }) {
   const { drinkRecipe, setDrinkRecipe, userFlavor, userLiquor, userMood } =
     userStore();
   async function getRecipe() {
@@ -24,7 +24,7 @@ export default function GenerateRecipe() {
   return (
     <>
       <form action={getRecipe}>
-        <Button type="submit" className="">
+        <Button type="submit" className="" onClick={() => setLoading(true)}>
           Generate Recipe
         </Button>
       </form>
