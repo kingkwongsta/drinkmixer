@@ -5,7 +5,7 @@
 
 "use client";
 import { useState } from "react";
-import DropDownItem from "./component/DropDownItem";
+import DropdownItem from "./dropdownitem";
 import userStore from "@/lib/userStore";
 
 export default function Dropdown() {
@@ -42,19 +42,19 @@ export default function Dropdown() {
     <div className="container px-4 md:px-6 flex flex-col gap-4">
       <div className="flex flex-col gap-4">
         <div className="flex flex-row gap-10 justify-center">
-          <DropDownItem
+          <DropdownItem
             buttonName={"Flavor Profile"}
             dropDownValues={flavorOptions}
             preference={userFlavor}
             setPreference={setUserFlavor}
           />
-          <DropDownItem
+          <DropdownItem
             buttonName={"Liquor Choice"}
             dropDownValues={liquorOptions}
             preference={userLiquor}
             setPreference={setUserLiquor}
           />
-          <DropDownItem
+          <DropdownItem
             buttonName={"Mood"}
             dropDownValues={moodOptions}
             preference={userMood}

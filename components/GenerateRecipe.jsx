@@ -28,14 +28,14 @@ export default function GenerateRecipe() {
           Generate Recipe
         </Button>
       </form>
-      <button
+      {/* <button
         onClick={() => {
           console.log(drinkRecipe);
         }}
         className="border-2 border-cyan-500"
       >
         Get Recipe
-      </button>
+      </button> */}
     </>
   );
 }
