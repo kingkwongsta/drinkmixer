@@ -17,7 +17,7 @@ export default function RecipeCard() {
   const { drinkImage, drinkRecipe } = userStore();
 
   return (
-    <Card className="w-full max-w-md">
+    <Card className="w-full max-w-lg">
       <CardHeader className="px-6 pt-6 pb-4">
         <CardTitle className="text-3xl font-bold">{drinkRecipe.name}</CardTitle>
         <CardDescription>{drinkRecipe.description}</CardDescription>
@@ -35,30 +35,32 @@ export default function RecipeCard() {
           width="1200"
         />
       </CardContent>
-      <CardContent className="mt-6">
-        <div className="items-center gap-4">
-          <h3 className="text-sm font-semibold mb-1">Preparation</h3>
-          <ul className="pl-2 text-sm">
-            {drinkRecipe.ingredients
-              .filter((item) => item.name !== "Ice cubes")
-              .map((ingredient, index) => (
-                <li key={index}>
-                  {ingredient.quantity} {ingredient.name.toLowerCase()}
-                </li>
+      <div className="flex flex-row mt-6">
+        <CardContent className="">
+          <div className="items-center gap-4">
+            <h3 className="text-sm font-semibold mb-1">Ingredients</h3>
+            <ul className="pl-2 text-sm">
+              {drinkRecipe.ingredients
+                .filter((item) => item.name !== "Ice cubes")
+                .map((ingredient, index) => (
+                  <li key={index}>
+                    {ingredient.quantity} {ingredient.name.toLowerCase()}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </CardContent>
+        <CardContent className="">
+          <div className="">
+            <h3 className="text-sm font-semibold mb-1">Preparation</h3>
+            <ol className="list-decimal pl-6 text-sm">
+              {drinkRecipe.instructions.split(".").map((step, index) => (
+                <li key={index}>{step}</li>
               ))}
-          </ul>
-        </div>
-      </CardContent>
-      <CardContent className="">
-        <div className="">
-          <h3 className="text-sm font-semibold mb-1">Ingredients</h3>
-          <ol className="list-decimal pl-6 text-sm">
-            {drinkRecipe.instructions.split(".").map((step, index) => (
-              <li key={index}>{step}</li>
-            ))}
-          </ol>
-        </div>
-      </CardContent>
+            </ol>
+          </div>
+        </CardContent>
+      </div>
       <CardFooter className="flex justify-end gap-2">
         <Button>Start Over</Button>
       </CardFooter>
