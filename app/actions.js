@@ -15,7 +15,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
 
   const instructions = `create a unique cocktail based on the user preferences in the text delimited by triple periods `;
   const output_format =
-    'JSON output should contain: "name", "ingredients" (array of key-value pairs with "name" and "quantity"), "instructions"';
+    'JSON output should contain: "name", "description" "ingredients" (array of key-value pairs with "name" and "quantity"), "instructions"';
   const prompt = instructions + output_format + `...${userPreferences}...`;
   const messages = [
     {
