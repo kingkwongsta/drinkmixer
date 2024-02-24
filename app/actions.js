@@ -77,9 +77,13 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
   }
 }
 
-export async function createImage() {
+export async function createImage(response, userLiquor) {
   const endpointUrl = "https://image.octoai.run/generate/sdxl";
-  const modifiedPrompt = `In the center of the bar, illuminated by a spotlight emanating from the ceiling, sits a masterpiece of cocktail. A crystal coupe glass cradles a cocktail containing gin, lemon juice, simple syrup, orange bitters, and egg white. A liquor bottle of gin next to cocktail.Utilizing photorealistic and hyper-detailed style to capture the rich textures and vibrant colors of the scene. Additionally emphasize the interplay of light and shadow, creating a sense of drama and intrigue.`;
+  const ingredientString = response.ingredients
+    .map((ingredient) => ingredient.name.toLowerCase())
+    .join(", ");
+
+  const modifiedPrompt = `In the center of the bar, focus on a cocktail containing ${ingredientString}.  Next to the cocktail are ${ingredientString}.  A liquor bottle of ${userLiquor} with the text "${userLiquor}" next to cocktail.  A sign with the text "${response.name} is next to the cocktail" Utilizing photorealistic and hyper-detailed style to capture the rich textures and vibrant colors of the scene. Additionally emphasize the interplay of light and shadow, creating a sense of drama and intrigue.`;
   const inputs = {
     prompt: modifiedPrompt,
     negative_prompt:
@@ -94,6 +98,7 @@ export async function createImage() {
     high_noise_frac: 0.8,
     style_preset: "Watercolor",
   };
+  console.log(modifiedPrompt);
   const outputs = await client.infer(endpointUrl, inputs);
   const images = outputs.images.map((output, i) => {
     const buffer = Buffer.from(output.image_b64, "base64");
