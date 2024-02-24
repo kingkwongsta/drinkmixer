@@ -70,36 +70,36 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     }
     // console.log(`prompt: ${prompt}`);
     console.log("recipe creation completed...");
-    return { recipe, imageReponse };
+    return recipe;
   } catch (error) {
     console.error("Error parsing recipe:", error);
     return { error: "Unable to parse recipe as JSON" };
   }
 }
 
-
 export async function createImage() {
-   const endpointUrl = "https://image.octoai.run/generate/sdxl";
-   const inputs = {
-     prompt: "A photo of a cute cat astronaut in space",
-     negative_prompt: "Blurry photo, distortion, low-res, poor quality",
-     width: 1024,
-     height: 1024,
-     num_images: 1,
-     sampler: "DDIM",
-     steps: 30,
-     cfg_scale: 12,
-     use_refiner: true,
-     high_noise_frac: 0.8,
-     style_preset: "base",
-   };
-   const outputs = await client.infer(endpointUrl, inputs);
-   const images = outputs.images.map((output, i) => {
-    const buffer = Buffer.from(output.image_b64, "base64");
-    const imageData = buffer.toString("base64"); // Use base64 for API response
+  const endpointUrl = "https://image.octoai.run/generate/sdxl";
+  const inputs = {
+    prompt: "A photo of a cute cat astronaut in space",
+    negative_prompt: "Blurry photo, distortion, low-res, poor quality",
+    width: 1024,
+    height: 1024,
+    num_images: 1,
+    sampler: "DDIM",
+    steps: 30,
+    cfg_scale: 12,
+    use_refiner: true,
+    high_noise_frac: 0.8,
+    style_preset: "base",
+  };
+  const outputs = await client.infer(endpointUrl, inputs);
+  const images = outputs.images.map((output, i) => {
+    const dataUrl = `data:image/jpeg;base64,${output.image_b64}`;
     return {
-      filename: `result${i}.jpg`,
-      imageData,
+      filename: `result${i}.jpg`, // Optional for reference
+      dataUrl,
     };
-  }
+  });
+
+  return images;
 }

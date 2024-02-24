@@ -19,9 +19,9 @@ export default function GenerateRecipe() {
     setIsLoading(true);
     try {
       const response = await createCompletion(userFlavor, userLiquor, userMood);
+      const imageResponse = await createImage();
       if (response) {
-        const { recipe, imageResponse } = response;
-        setDrinkRecipe(recipe);
+        setDrinkRecipe(response);
         setDrinkImage(imageResponse);
       } else {
         console.log("recipe unavailable");
