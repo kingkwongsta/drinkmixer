@@ -51,36 +51,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     model: "gpt-3.5-turbo",
     messages,
   });
-  console.log(messages);
-  // ------------ IMAGE GEN ------------
-  const endpointUrl = "https://image.octoai.run/generate/sdxl";
-  const inputs = {
-    prompt: "A photo of a cute cat astronaut in space",
-    negative_prompt: "Blurry photo, distortion, low-res, poor quality",
-    width: 1024,
-    height: 1024,
-    num_images: 1,
-    sampler: "DDIM",
-    steps: 30,
-    cfg_scale: 12,
-    use_refiner: true,
-    high_noise_frac: 0.8,
-    style_preset: "base",
-  };
-  const outputs = await client.infer(endpointUrl, inputs);
-  const imageReponse = [];
-  outputs.images.forEach((output, i) => {
-    // Create a data URL for the image
-    const dataUrl = `data:image/jpeg;base64,${output.image_b64}`;
-
-    // Add relevant data to the response array
-    imageResponses.push({
-      filename: `result${i}.jpg`, // Optional for reference
-      dataUrl: dataUrl,
-      // Add other information as needed
-    });
-  });
-  // ------------ IMAGE GEN ------------
+  // console.log(messages);
 
   const recipeResponse = completion.choices[0].message.content;
   if (!recipeResponse) {
@@ -97,7 +68,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     ) {
       throw new Error("Invalid recipe format");
     }
-    console.log(`prompt: ${prompt}`);
+    // console.log(`prompt: ${prompt}`);
     console.log("recipe creation completed...");
     return { recipe, imageReponse };
   } catch (error) {
@@ -105,60 +76,30 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     return { error: "Unable to parse recipe as JSON" };
   }
 }
-// export async function createImage() {
-//   const endpointUrl = "https://image.octoai.run/generate/sdxl";
-//   const modifiedPrompt = `In the center of the bar, illuminated by a spotlight emanating from the ceiling, sits a masterpiece of cocktail. A crystal coupe glass cradles a cocktail containing gin, lemon juice, simple syrup, orange bitters, and egg white. A liquor bottle of gin next to cocktail.Utilizing photorealistic and hyper-detailed style to capture the rich textures and vibrant colors of the scene. Additionally emphasize the interplay of light and shadow, creating a sense of drama and intrigue.`;
-//   const inputs = {
-//     prompt: modifiedPrompt,
-//     negative_prompt:
-//       "Blurry photo, distortion, low-res, poor quality, multiple cocktail glasses",
-//     width: 832,
-//     height: 1216,
-//     num_images: 1,
-//     sampler: "DDIM",
-//     steps: 30,
-//     cfg_scale: 12,
-//     use_refiner: true,
-//     high_noise_frac: 0.8,
-//     style_preset: "Watercolor",
-//   };
 
-//   try {
-//     const outputs = await client.infer(endpointUrl, inputs);
 
-//     if (response.error) {
-//       throw new Error(`Error from OctoAI: ${response.error}`);
-//     }
-
-//     const imageResponse = outputs.images[0];
-//     const imageData = imageResponse.image_b64;
-//     const imageUrl = `data:image/jpeg;base64,${imageData}`;
-
-//     console.log("image creation completed");
-//     return imageUrl;
-//   } catch (error) {
-//     console.error("Error generating image:", error);
-//     return { error: "Unable to generate image" };
-//   }
-// }
-
-// generate image using OctoAI - Stable Diffusion XL
-
-//upload image to supabase storage
-
-//create new blog post in supabase
-//   const { data: blog, error: blogError } = await supabase
-//     .from("blogs")
-//     .insert([
-//       { title: "hello", content: recipe, imageUrl: "imgage", userId: "123" },
-//     ])
-//     .select();
-
-//   if (blogError) {
-//     return { error: "Unable to insert the blog into the database." };
-//   }
-
-//   const blogId = blog?.[0]?.id;
-
-//   revalidatePath("/");
-//   redirect(`/blog/${blogId}`);
+export async function createImage() {
+   const endpointUrl = "https://image.octoai.run/generate/sdxl";
+   const inputs = {
+     prompt: "A photo of a cute cat astronaut in space",
+     negative_prompt: "Blurry photo, distortion, low-res, poor quality",
+     width: 1024,
+     height: 1024,
+     num_images: 1,
+     sampler: "DDIM",
+     steps: 30,
+     cfg_scale: 12,
+     use_refiner: true,
+     high_noise_frac: 0.8,
+     style_preset: "base",
+   };
+   const outputs = await client.infer(endpointUrl, inputs);
+   const images = outputs.images.map((output, i) => {
+    const buffer = Buffer.from(output.image_b64, "base64");
+    const imageData = buffer.toString("base64"); // Use base64 for API response
+    return {
+      filename: `result${i}.jpg`,
+      imageData,
+    };
+  }
+}

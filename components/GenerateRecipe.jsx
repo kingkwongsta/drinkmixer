@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import userStore from "@/lib/userStore";
 import { useState } from "react";
-import { createCompletion } from "@/app/actions";
+import { createCompletion, createImage } from "@/app/actions";
 import LoadingIcon from "./LoadingIcon";
 
 export default function GenerateRecipe() {
@@ -20,8 +20,7 @@ export default function GenerateRecipe() {
     try {
       const response = await createCompletion(userFlavor, userLiquor, userMood);
       if (response) {
-        const { recipe } = response;
-        const { imageResponse } = response;
+        const { recipe, imageResponse } = response;
         setDrinkRecipe(recipe);
         setDrinkImage(imageResponse);
       } else {
