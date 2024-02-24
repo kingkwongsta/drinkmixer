@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import userStore from "@/lib/userStore";
 
 export default function RecipeCard() {
-  const { drinkImage, drinkRecipe } = userStore();
+  const { drinkImage, drinkRecipe, setDrinkRecipe } = userStore();
 
   return (
     <Card className="w-full max-w-lg">
@@ -62,7 +62,13 @@ export default function RecipeCard() {
         </CardContent>
       </div>
       <CardFooter className="flex justify-end gap-2">
-        <Button>Start Over</Button>
+        <Button
+          onClick={() => {
+            setDrinkRecipe("");
+          }}
+        >
+          Start Over
+        </Button>
       </CardFooter>
     </Card>
   );

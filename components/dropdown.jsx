@@ -48,17 +48,18 @@ export default function Dropdown() {
             preference={userFlavor}
             setPreference={setUserFlavor}
           />
-          <DropdownItem
-            buttonName={"Liquor Choice"}
-            dropDownValues={liquorOptions}
-            preference={userLiquor}
-            setPreference={setUserLiquor}
-          />
+
           <DropdownItem
             buttonName={"Mood"}
             dropDownValues={moodOptions}
             preference={userMood}
             setPreference={setUserMood}
+          />
+          <DropdownItem
+            buttonName={"Liquor Choice"}
+            dropDownValues={liquorOptions}
+            preference={userLiquor}
+            setPreference={setUserLiquor}
           />
         </div>
       </div>
