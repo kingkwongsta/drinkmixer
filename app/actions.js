@@ -94,10 +94,11 @@ export async function createImage() {
   };
   const outputs = await client.infer(endpointUrl, inputs);
   const images = outputs.images.map((output, i) => {
-    const dataUrl = `data:image/jpeg;base64,${output.image_b64}`;
+    const buffer = Buffer.from(output.image_b64, "base64");
+    const imageData = buffer.toString("base64"); // Use base64 for API response
     return {
-      filename: `result${i}.jpg`, // Optional for reference
-      dataUrl,
+      filename: `result${i}.jpg`,
+      imageData,
     };
   });
 

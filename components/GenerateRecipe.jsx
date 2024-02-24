@@ -20,9 +20,11 @@ export default function GenerateRecipe() {
     try {
       const response = await createCompletion(userFlavor, userLiquor, userMood);
       const imageResponse = await createImage();
+      const imageURL = `data:image/jpeg;base64,${imageResponse[0].imageData}`;
+
       if (response) {
         setDrinkRecipe(response);
-        setDrinkImage(imageResponse);
+        setDrinkImage(imageURL);
       } else {
         console.log("recipe unavailable");
       }

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import userStore from "@/lib/userStore";
+import Image from "next/image";
 
 export default function RecipeCard() {
   const { drinkImage, drinkRecipe, setDrinkRecipe } = userStore();
@@ -23,11 +24,11 @@ export default function RecipeCard() {
         <CardDescription>{drinkRecipe.description}</CardDescription>
       </CardHeader>
       <CardContent className="bg-gray-100 py-6 flex items-center justify-center gap-6 dark:bg-gray-800">
-        <img
+        <Image
           alt="Mojito cocktail"
           className="rounded-xl object-cover"
           height="400"
-          src="/placeholder.svg"
+          src={drinkImage}
           style={{
             aspectRatio: "1200/400",
             objectFit: "cover",
