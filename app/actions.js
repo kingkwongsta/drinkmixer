@@ -13,7 +13,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
   // Generate recipe using OpenAI - GPT-3.5
   const userPreferences = `contains ${userLiquor} and emphasizes a ${userFlavor} flavor profile for a ${userMood} mood`;
 
-  const instructions = `create a unique cocktail based on the user preferences in the text delimited by triple periods `;
+  const instructions = `create a unique creative advance cocktail based on the user preferences in the text delimited by triple periods `;
   // const output_format =
   //   'JSON output should look like: "name", "description" "ingredients" (array of key-value pairs with "name" and "quantity"), "instructions"';
   const jsonformat = {
@@ -93,7 +93,7 @@ export async function createImage(response, userLiquor) {
     .map((ingredient) => ingredient.name.toLowerCase())
     .join(", ");
 
-  const modifiedPrompt = `In the center of the bar, focus on a cocktail containing ${ingredientString}.  Next to the cocktail are ${ingredientString}.  A liquor bottle of ${userLiquor} with the text "${userLiquor}" next to cocktail.  A sign with the text "${response.name} is next to the cocktail" Utilizing photorealistic and hyper-detailed style to capture the rich textures and vibrant colors of the scene. Additionally emphasize the interplay of light and shadow, creating a sense of drama and intrigue.`;
+  const modifiedPrompt = `The background reflects a ${response.name}, focus on a cocktail containing ${ingredientString}.  Next to the cocktail are ${ingredientString}.  A liquor bottle of ${userLiquor} with the text "${userLiquor}" next to cocktail.  A sign with the text "${response.name} is next to the cocktail" Utilizing photorealistic and hyper-detailed style to capture the rich textures and vibrant colors of the scene. Additionally emphasize the interplay of light and shadow, creating a sense of drama and intrigue.`;
   const inputs = {
     prompt: modifiedPrompt,
     negative_prompt:
