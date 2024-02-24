@@ -24,7 +24,7 @@ export default function RecipeCard() {
         <CardDescription>{drinkRecipe.description}</CardDescription>
       </CardHeader>
       <Image
-        alt="Mojito cocktail"
+        alt={drinkRecipe.name}
         className="object-cover my-2"
         height="600"
         src={drinkImage}
