@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
-  const { drinkRecipe } = userStore();
+  const { drinkRecipe, drinkImage } = userStore();
 
   return (
     <main className="w-full px-12 py-12 md:py-24 space-y-[50px]">
@@ -18,6 +18,8 @@ export default function Home() {
         {!drinkRecipe && <GenerateRecipe />}
         {drinkRecipe && <RecipeCard />}
       </div>
+      {/* <button onClick={() => console.log(drinkRecipe)}>get data</button>
+      <button onClick={() => console.log(drinkImage)}>get image</button> */}
     </main>
   );
 }
