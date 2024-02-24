@@ -23,19 +23,13 @@ export default function RecipeCard() {
         <CardTitle className="text-3xl font-bold">{drinkRecipe.name}</CardTitle>
         <CardDescription>{drinkRecipe.description}</CardDescription>
       </CardHeader>
-      <CardContent className="bg-gray-100 py-6 flex items-center justify-center gap-6 dark:bg-gray-800">
-        <Image
-          alt="Mojito cocktail"
-          className="rounded-xl object-cover"
-          height="400"
-          src={drinkImage}
-          style={{
-            aspectRatio: "1200/400",
-            objectFit: "cover",
-          }}
-          width="1200"
-        />
-      </CardContent>
+      <Image
+        alt="Mojito cocktail"
+        className="object-cover my-2"
+        height="600"
+        src={drinkImage}
+        width="1200"
+      />
       <div className="flex flex-row mt-6">
         <CardContent className="">
           <div className="items-center gap-4">
