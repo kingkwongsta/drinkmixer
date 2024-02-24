@@ -19,7 +19,7 @@ export default function RecipeCard() {
 
   return (
     <Card className="w-full max-w-lg">
-      <CardHeader className="px-6 pt-6 pb-4">
+      <CardHeader className="px-6 pt-6 pb-4 text-center">
         <CardTitle className="text-3xl font-bold">{drinkRecipe.name}</CardTitle>
         <CardDescription>{drinkRecipe.description}</CardDescription>
       </CardHeader>
@@ -34,7 +34,7 @@ export default function RecipeCard() {
         <CardContent className="">
           <div className="items-center gap-4">
             <h3 className="text-sm font-semibold mb-1">Ingredients</h3>
-            <ul className="pl-2 text-sm">
+            <ul className=" text-sm">
               {drinkRecipe.ingredients
                 .filter((item) => item.name !== "Ice cubes")
                 .map((ingredient, index) => (
@@ -48,7 +48,7 @@ export default function RecipeCard() {
         <CardContent className="">
           <div className="">
             <h3 className="text-sm font-semibold mb-1">Preparation</h3>
-            <ol className="list-decimal pl-6 text-sm">
+            <ol className="list-decimal pl-4 text-sm">
               {drinkRecipe.instructions.split(".").map((step, index) => (
                 <li key={index}>{step}</li>
               ))}
@@ -56,8 +56,9 @@ export default function RecipeCard() {
           </div>
         </CardContent>
       </div>
-      <CardFooter className="flex justify-end gap-2">
+      <CardFooter className="flex justify-center gap-2">
         <Button
+          className="mt-4"
           onClick={() => {
             setDrinkRecipe("");
           }}
