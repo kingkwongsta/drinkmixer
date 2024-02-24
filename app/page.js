@@ -18,6 +18,7 @@ export default function Home() {
         {!drinkRecipe && <GenerateRecipe />}
         {drinkRecipe && <RecipeCard />}
       </div>
+      <button onClick={() => console.log(drinkRecipe)}>get data</button>
     </main>
   );
 }

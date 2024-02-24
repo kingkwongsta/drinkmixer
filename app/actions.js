@@ -14,8 +14,28 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
   const userPreferences = `contains ${userLiquor} and emphasizes a ${userFlavor} flavor profile for a ${userMood} mood`;
 
   const instructions = `create a unique cocktail based on the user preferences in the text delimited by triple periods `;
-  const output_format =
-    'JSON output should contain: "name", "description" "ingredients" (array of key-value pairs with "name" and "quantity"), "instructions"';
+  // const output_format =
+  //   'JSON output should look like: "name", "description" "ingredients" (array of key-value pairs with "name" and "quantity"), "instructions"';
+  const jsonformat = {
+    name: "Sour Nostalgia",
+    description:
+      "A unique cocktail with a nostalgic twist, featuring a sour flavor profile with a hint of nostalgia",
+    ingredients: [
+      {
+        name: "Vodka",
+        quantity: "2 oz",
+      },
+      {
+        name: "Lemon Juice",
+        quantity: "1 oz",
+      },
+    ],
+    instructions:
+      "Add all ingredients to a cocktail shaker without ice. Dry shake vigorously for 10-15 seconds. Add ice and shake again until well chilled.",
+  };
+
+  const output_format = `JSON output should look like: ${jsonformat}`;
+
   const prompt = instructions + output_format + `...${userPreferences}...`;
   const messages = [
     {
@@ -29,7 +49,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     model: "gpt-3.5-turbo",
     messages,
   });
-
+  console.log(messages);
   const recipeResponse = completion.choices[0].message.content;
   if (!recipeResponse) {
     return { error: "Unable to generate recipe" };
