@@ -38,7 +38,10 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     jsonformat
   )}`;
 
-  const prompt = instructions + output_format + `...${userPreferences}...`;
+  const negative = `Do not include ${userFlavor}, ${userLiquor}, or ${userMood} in the recipe name.`;
+
+  const prompt =
+    instructions + negative + output_format + `...${userPreferences}...`;
   const messages = [
     {
       role: "system",
@@ -47,13 +50,20 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     { role: "user", content: prompt },
   ];
 
-  const completion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages,
+  // const completion = await openai.chat.completions.create({
+  //   model: "gpt-3.5-turbo",
+  //   messages,
+  // });
+  const completion = await client.completions.create({
+    model: "smaug-72b-chat",
+    prompt: prompt,
+    max_tokens: 1000,
+    presence_penalty: 0,
+    temperature: 0.1,
+    top_p: 0.9,
   });
-  // console.log(messages);
+  const recipeResponse = completion.choices[0].text;
 
-  const recipeResponse = completion.choices[0].message.content;
   if (!recipeResponse) {
     return { error: "Unable to generate recipe" };
   }

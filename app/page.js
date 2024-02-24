@@ -18,8 +18,8 @@ export default function Home() {
         {!drinkRecipe && <GenerateRecipe />}
         {drinkRecipe && <RecipeCard />}
       </div>
-      {/* <button onClick={() => console.log(drinkRecipe)}>get data</button>
-      <button onClick={() => console.log(drinkImage)}>get image</button> */}
+      <button onClick={() => console.log(drinkRecipe)}>get data</button>
+      <button onClick={() => console.log(drinkImage)}>get image</button>
     </main>
   );
 }
