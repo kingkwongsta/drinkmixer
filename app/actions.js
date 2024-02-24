@@ -52,6 +52,36 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     messages,
   });
   console.log(messages);
+  // ------------ IMAGE GEN ------------
+  const endpointUrl = "https://image.octoai.run/generate/sdxl";
+  const inputs = {
+    prompt: "A photo of a cute cat astronaut in space",
+    negative_prompt: "Blurry photo, distortion, low-res, poor quality",
+    width: 1024,
+    height: 1024,
+    num_images: 1,
+    sampler: "DDIM",
+    steps: 30,
+    cfg_scale: 12,
+    use_refiner: true,
+    high_noise_frac: 0.8,
+    style_preset: "base",
+  };
+  const outputs = await client.infer(endpointUrl, inputs);
+  const imageReponse = [];
+  outputs.images.forEach((output, i) => {
+    // Create a data URL for the image
+    const dataUrl = `data:image/jpeg;base64,${output.image_b64}`;
+
+    // Add relevant data to the response array
+    imageResponses.push({
+      filename: `result${i}.jpg`, // Optional for reference
+      dataUrl: dataUrl,
+      // Add other information as needed
+    });
+  });
+  // ------------ IMAGE GEN ------------
+
   const recipeResponse = completion.choices[0].message.content;
   if (!recipeResponse) {
     return { error: "Unable to generate recipe" };
@@ -69,7 +99,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     }
     console.log(`prompt: ${prompt}`);
     console.log("recipe creation completed...");
-    return recipe;
+    return { recipe, imageReponse };
   } catch (error) {
     console.error("Error parsing recipe:", error);
     return { error: "Unable to parse recipe as JSON" };
