@@ -30,7 +30,7 @@ export default function RecipeCard() {
         src={drinkImage}
         width="1200"
       />
-      <div className="flex flex-row mt-6">
+      <div className="flex flex-col sm:flex-row mt-6">
         <CardContent className="">
           <div className="items-center gap-4">
             <h3 className="text-sm font-semibold mb-1">Ingredients</h3>
