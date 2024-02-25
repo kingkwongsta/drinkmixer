@@ -8,6 +8,9 @@ export const metadata = {
   title: "Drink Mixer",
   description:
     "Discover a world of exquisite cocktails by sharing your preferences",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {
