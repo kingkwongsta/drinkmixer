@@ -59,7 +59,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
     prompt: prompt,
     max_tokens: 1000,
     presence_penalty: 0,
-    temperature: 0.1,
+    temperature: 0.8,
     top_p: 0.9,
   });
   const recipeResponse = completion.choices[0].text;
