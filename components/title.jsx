@@ -11,7 +11,7 @@ export default function Title() {
           onClick={() => setDrinkRecipe("")}
           className="text-3xl font-bold tracking-tight"
         >
-          Drink Masters
+          Drink Mixer
         </h1>
         <p className="text-gray-500 dark:text-gray-400">
           Discover a world of exquisite cocktails by sharing your preferences
