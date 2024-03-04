@@ -1,5 +1,5 @@
 # Drink Mixer
-Discover a world of exquisite cocktails
+Discover a world of exquisite cocktail recipes
 ### Live Site: https://drinkmixer-olive.vercel.app/
 
 ## Features
