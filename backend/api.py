@@ -2,20 +2,10 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 import os
 
-
 app = FastAPI()
-
-# if os.getenv("PRODUCTION_DOMAIN"):
-#     origins = [os.getenv("PRODUCTION_DOMAIN")]
-# else:
-#     origins = ["http://localhost:3000"]
-# origins = ["langchain-frontend-one.vercel.app"]
-
-# origins = ["https://langchain-frontend-one.vercel.app/", "http://localhost:3000"]
 
 app.add_middleware(
     CORSMiddleware,
-    # allow_origins=origins,
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
