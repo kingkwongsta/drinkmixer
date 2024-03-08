@@ -35,9 +35,28 @@ export default function GenerateRecipe() {
       setIsLoading(false);
     }
   }
+  const fetchData = async () => {
+    const queryString = new URLSearchParams({
+      liquor: userLiquor,
+      flavor: userFlavor,
+      mood: userMood,
+    });
+    const baseUrl =
+      process.env.NODE_ENV === "production"
+        ? `https://langchain-backend-kappa.vercel.app/cocktail?${queryString}`
+        : `/cocktail?${queryString}`;
+
+    const url = `${baseUrl}?${queryString}`;
+    // const url = `/cocktail?${queryString}`;
+    // const url = `http://127.0.0.1:8000/cocktail?${queryString}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    setDrinkRecipe(data);
+    setIsLoading(false);
+  };
   return (
     <>
-      <form action={getRecipe}>
+      <form action={fetchData}>
         <Button
           type="submit"
           className={` ${isLoading ? "hidden" : ""}`}
