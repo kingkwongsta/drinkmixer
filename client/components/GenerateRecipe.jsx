@@ -47,8 +47,6 @@ export default function GenerateRecipe() {
         : `/cocktail?${queryString}`;
 
     const url = `${baseUrl}?${queryString}`;
-    // const url = `/cocktail?${queryString}`;
-    // const url = `http://127.0.0.1:8000/cocktail?${queryString}`;
     const res = await fetch(url);
     const data = await res.json();
     setDrinkRecipe(data);
