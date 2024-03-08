@@ -6,10 +6,14 @@ from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.pydantic_v1 import BaseModel, Field
 from langchain_community.llms.octoai_endpoint import OctoAIEndpoint
 
+class Ingredient(BaseModel):
+    name: str = Field(description="Name of the ingredient")
+    quantity: str = Field(description="Quantity of the ingredient")
+
 class Recipe(BaseModel):
         name: str = Field(description="Name of the drink")
         description: str = Field(description="Description of the drink")
-        ingredients: List[str] = Field(description="List of ingredients")
+        ingredients: List[Ingredient] = Field(description="List of ingredients")
         instructions: List[str] = Field(description="List of mixing instructions")
 
 
