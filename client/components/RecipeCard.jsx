@@ -49,7 +49,7 @@ export default function RecipeCard() {
           <div className="">
             <h3 className="text-sm font-semibold mb-1">Preparation</h3>
             <ol className="list-decimal pl-4 text-sm">
-              {drinkRecipe.instructions.split(".").map((step, index) => (
+              {drinkRecipe.instructions.map((step, index) => (
                 <li key={index}>{step}</li>
               ))}
             </ol>
