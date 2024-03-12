@@ -30,8 +30,11 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
         quantity: "1 oz",
       },
     ],
-    instructions:
-      ["Add all ingredients to a cocktail shaker without ice.", "Dry shake vigorously for 10-15 seconds.", "Add ice and shake again until well chilled"],
+    instructions: [
+      "Add all ingredients to a cocktail shaker without ice.",
+      "Dry shake vigorously for 10-15 seconds.",
+      "Add ice and shake again until well chilled",
+    ],
   };
 
   const output_format = `JSON output should look like: ${JSON.stringify(
@@ -98,6 +101,9 @@ export async function createImage(response, userLiquor) {
     prompt: modifiedPrompt,
     negative_prompt:
       "Blurry photo, distortion, low-res, poor quality, multiple cocktail glasses",
+    loras: {
+      "octoai:paint-splash": 0.5,
+    },
     width: 1536,
     height: 640,
     num_images: 1,
