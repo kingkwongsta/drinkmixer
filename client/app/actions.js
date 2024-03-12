@@ -31,7 +31,7 @@ export async function createCompletion(userFlavor, userLiquor, userMood) {
       },
     ],
     instructions:
-      "Add all ingredients to a cocktail shaker without ice. Dry shake vigorously for 10-15 seconds. Add ice and shake again until well chilled",
+      ["Add all ingredients to a cocktail shaker without ice.", "Dry shake vigorously for 10-15 seconds.", "Add ice and shake again until well chilled"],
   };
 
   const output_format = `JSON output should look like: ${JSON.stringify(
