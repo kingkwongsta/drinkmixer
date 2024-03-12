@@ -18,7 +18,7 @@ export default function RecipeCard() {
   const { drinkImage, drinkRecipe, setDrinkRecipe } = userStore();
 
   return (
-    <Card className="w-full max-w-lg">
+    <Card className="w-full max-w-2xl">
       <CardHeader className="px-6 pt-6 pb-4 text-center">
         <CardTitle className="text-3xl font-bold">{drinkRecipe.name}</CardTitle>
         <CardDescription>{drinkRecipe.description}</CardDescription>
@@ -34,7 +34,7 @@ export default function RecipeCard() {
         <CardContent className="">
           <div className="items-center gap-4">
             <h3 className="text-sm font-semibold mb-1">Ingredients</h3>
-            <ul className="text-sm list-disc marker:text-white">
+            <ul className="text-sm list-disc marker:text-white pl-4">
               {drinkRecipe.ingredients
                 .filter((item) => item.name !== "Ice cubes")
                 .map((ingredient, index) => (
