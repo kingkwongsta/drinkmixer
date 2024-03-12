@@ -49,7 +49,13 @@ export default function GenerateRecipe() {
     const url = `${baseUrl}?${queryString}`;
     const res = await fetch(url);
     const data = await res.json();
-    setDrinkRecipe(data);
+    if (data) {
+      const imageResponse = await createImage(data, userLiquor);
+      const imageURL = `data:image/jpeg;base64,${imageResponse[0].imageData}`;
+      setDrinkRecipe(data);
+      setDrinkImage(imageURL);
+    }
+
     setIsLoading(false);
   };
   return (
