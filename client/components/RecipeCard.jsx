@@ -34,7 +34,7 @@ export default function RecipeCard() {
         <CardContent className="">
           <div className="items-center gap-4">
             <h3 className="text-sm font-semibold mb-1">Ingredients</h3>
-            <ul className=" text-sm">
+            <ul className="text-sm list-disc marker:text-white">
               {drinkRecipe.ingredients
                 .filter((item) => item.name !== "Ice cubes")
                 .map((ingredient, index) => (
