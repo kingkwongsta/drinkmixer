@@ -7,34 +7,8 @@ import LoadingIcon from "./LoadingIcon";
 
 export default function GenerateRecipe() {
   const [isLoading, setIsLoading] = useState(false);
-  const {
-    drinkRecipe,
-    setDrinkRecipe,
-    userFlavor,
-    userLiquor,
-    userMood,
-    setDrinkImage,
-  } = userStore();
-  async function getRecipe() {
-    setIsLoading(true);
-    try {
-      const response = await createCompletion(userFlavor, userLiquor, userMood);
-
-      if (response) {
-        const imageResponse = await createImage(response, userLiquor);
-        const imageURL = `data:image/jpeg;base64,${imageResponse[0].imageData}`;
-
-        setDrinkRecipe(response);
-        setDrinkImage(imageURL);
-      } else {
-        console.log("recipe unavailable");
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  const { setDrinkRecipe, userFlavor, userLiquor, userMood, setDrinkImage } =
+    userStore();
   const fetchData = async () => {
     const queryString = new URLSearchParams({
       liquor: userLiquor,
