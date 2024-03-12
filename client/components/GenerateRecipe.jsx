@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import userStore from "@/lib/userStore";
 import { useState } from "react";
-import { createCompletion, createImage } from "@/app/actions";
+import { createImage } from "@/app/actions";
 import LoadingIcon from "./LoadingIcon";
 
 export default function GenerateRecipe() {
