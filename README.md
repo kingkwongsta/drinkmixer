@@ -1,6 +1,6 @@
 # Drink Mixer
 Discover a world of exquisite cocktail recipes
-### Live Site: https://drinkmixer-olive.vercel.app/
+### Live Site: https://drink-mixer.vercel.app/
 
 - Create a cocktail recipe based on your preference with Generative AI
 
